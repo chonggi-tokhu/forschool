@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반 자리 랜덤배정</title>
+    <link rel="stylesheet" href="./files/css/style.css">
+</head>
+
+<body>
+    <div style="display: flex;">
+        <div style="height: 36rem;">
+            <div style="height: 60rem !important;border: 1px solid #050505;display: block;background: lightgrey;">창가
+            </div>
+        </div>
+        <div>
+            <div style="display: flex;">
+                <div><button type="button" onclick="ourClassHTML.yourClass.randomNumber();ourClassHTML.setHTML();">무작위로
+                        자리
+                        바꾸기</button></div>
+                <div><input type="text" id="names_of_students" placeholder="출석부 입력(1번 학생,2번 학생,3번 학생... 식)"
+                        style="width: 24rem;overflow-x: scroll;"></div>
+                <div><button id="names_of_students_button">출석부 다시 입력!</button></div>
+            </div>
+            <div style="text-align: center;">
+                <div style="width: 60rem !important;border: 1px solid #050505;display: block;background: lightgrey;">칠판
+                    및 교탁
+                </div>
+            </div>
+            <div id="my_table" style="display: flex;">
+                <div style="display: block;right: 30rem;">
+                    <div class="table_item"></div>
+                    <div class="table_item"></div>
+                    <div class="table_item"></div>
+                    <div class="table_item"></div>
+                    <div class="table_item"></div>
+                    <div></div>
+                </div>
+                <div style="display: block;right: 40rem;">
+                    <div class="table_item"></div>
+                    <div class="table_item"></div>
+                    <div class="table_item"></div>
+                    <div class="table_item"></div>
+                    <div class="table_item"></div>
+                    <div class="table_item"></div>
+                </div>
+                <div style="display: block;right: 50rem;">
+                    <div class="table_item"></div>
+                    <div class="table_item"></div>
+                    <div class="table_item"></div>
+                    <div class="table_item"></div>
+                    <div class="table_item"></div>
+                    <div class="table_item"></div>
+                </div>
+                <div style="display: block;right: 60rem;">
+                    <div class="table_item"></div>
+                    <div class="table_item"></div>
+                    <div class="table_item"></div>
+                    <div class="table_item"></div>
+                    <div class="table_item"></div>
+                    <div class="table_item"></div>
+                </div>
+                <div style="display: block;right: 70rem;">
+                    <div></div>
+                    <div class="table_item"></div>
+                    <div class="table_item"></div>
+                    <div class="table_item"></div>
+                    <div class="table_item"></div>
+                    <div class="table_item"></div>
+                </div>
+                <div style="display: block;right: 80rem;">
+                    <div></div>
+                    <div class="table_item"></div>
+                    <div class="table_item"></div>
+                    <div class="table_item"></div>
+                    <div class="table_item"></div>
+                    <div class="table_item"></div>
+                </div>
+            </div>
+            <div style="text-align: center;position: absolute;bottom: 0rem;">
+                <div style="width: 60rem !important;border: 1px solid #050505;display: block;background: lightgrey;">
+                    사물함
+                </div>
+            </div>
+        </div>
+        <div style="height: 36rem;">
+            <div style="height: 60rem !important;border: 1px solid #050505;display: block;background: lightgrey;">복도
+            </div>
+        </div>
+    </div>
+    <div id="mydiv" style="width: 100vw;height: 40vh;" tabindex="0"></div>
+    <video width="400" height="225" id="myvideo"></video>
+
+    <script src="./files/js/random_number.js"></script>
+    <script>
+        const displayMediaOptions = {
+            video: {
+                displaySurface: "tab",
+            },
+            audio: {
+                echoCancellation: true,
+                noiseSuppression: true,
+                sampleRate: 44100,
+                suppressLocalAudioPlayback: true,
+            },
+            surfaceSwitching: "include",
+            selfBrowserSurface: "exclude",
+            systemAudio: "exclude",
+        };
+        var videoElem = document.querySelector('video#myvideo');
+        var bool0 = false;
+        var mediaRecorder = null;
+        var binaryData = [];
+        async function startCapture(cbfunc) {
+
+            try {
+                videoElem.srcObject =
+                    await navigator.mediaDevices.getDisplayMedia(displayMediaOptions).then(cbfunc);
+                bool0 = true;
+            } catch (err) {
+                console.error(err);
+            }
+        }
+        /*function pushtotracks() {
+          if (bool0) {
+            binaryData.push(videoElem.srcObject.getVideoTracks())
+          }
+        }*/
+        function stopCapture(evt) {
+            let tracks = videoElem.srcObject.getTracks();
+            bool0 = false;
+            tracks.forEach((track) => track.stop());
+            if (mediaRecorder instanceof MediaRecorder) {
+                mediaRecorder.stop();
+            }
+            return tracks;
+        }
+        function recording(stream) {
+            var data = [];
+            mediaRecorder = new MediaRecorder(stream, { mimeType:/*'x-matroska/webm; codecs="avc1.42E01E"'*/ 'video/webm; codecs="avc1.42E01E"' });
+            mediaRecorder.ondataavailable = function (ev) {
+                data.push(ev.data);
+            }
+            mediaRecorder.onstop = function (ev) {
+                var newBlob = new Blob(data, { type: 'video/webm; codecs="avc1.42E01E"' });
+                var newLinkPr = document.createElement("a");
+                var newLink = document.body.appendChild(newLinkPr);
+                newLink.href = window.URL.createObjectURL(newBlob);
+                newLink.download = 'myFile.webm';
+                newLink.click();
+            }
+            mediaRecorder.start();
+        }
+        var CtrlPressed = false;
+        document.getElementById("mydiv").addEventListener("keyup", function (ev) {
+            if (ev.key === 'Control' || ev.key === 'VK_CONTROL' || ev.key === 'kVK_Control' || ev.key === 'GDK_KEY_Control_L' || ev.key === 'KEYCODE_CTRL_LEFT') {
+                ev.preventDefault();
+                CtrlPressed = false;
+            }
+        });
+        document.getElementById("mydiv").addEventListener("keydown", function (ev) {
+            if (ev.key !== 'Enter') {
+                ev.preventDefault();
+            }
+            if (ev.key === 'Control' || ev.key === 'VK_CONTROL' || ev.key === 'kVK_Control' || ev.key === 'GDK_KEY_Control_L' || ev.key === 'KEYCODE_CTRL_LEFT') {
+
+                CtrlPressed = true;
+            }
+            if (CtrlPressed) {
+                if (ev.key === '6') {
+                    stopCapture(ev);
+                }
+                if (ev.key === '5') {
+                    startCapture(function (stream) {
+                        recording(stream);
+                    });
+                }
+            }
+        });
+        /* 여기까지 
+        var aaa = stopCapture();
+        aaa.forEach(function (val, idx, arr) {
+          binaryData.push(val);
+        });
+        window.URL.createObjectURL(new Blob(binaryData, { type: "video/mp4" }));*/
+        var ourClass = new schoolClass([], []);
+        var ourClassHTML = new schoolClassHTML(document.getElementById("new_table"), ourClass, { className: "table_item" });
+        ourClassHTML.setHTML();
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelector('*').style.setProperty('--font-size', window.innerWidth / 80)
+        });
+        document.getElementById("names_of_students_button").addEventListener("click", function (ev) {
+            var studentNumberAndNames = document.getElementById("names_of_students").value.split(',');
+            ourClass.update(studentNumberAndNames.length);
+            ourClass.updateStudentNames(studentNumberAndNames);
+            ourClassHTML.setHTML();
+        })
+    </script>
+</body>
+
+</html>
