@@ -8,7 +8,7 @@
     overflow: scroll;
 }
 
-#my_table>div>div {
+#my_table .table_space {
     width: 10rem !important;
     display: block;
     height: 6rem !important;
