@@ -30,52 +30,52 @@
             </div>
             <div id="my_table" style="display: flex;">
                 <div style="display: block;right: 30rem;">
-                    <div class="table_item"></div>
-                    <div class="table_item"></div>
-                    <div class="table_item"></div>
-                    <div class="table_item"></div>
-                    <div class="table_item"></div>
-                    <div></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
                 </div>
                 <div style="display: block;right: 40rem;">
-                    <div class="table_item"></div>
-                    <div class="table_item"></div>
-                    <div class="table_item"></div>
-                    <div class="table_item"></div>
-                    <div class="table_item"></div>
-                    <div class="table_item"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
                 </div>
                 <div style="display: block;right: 50rem;">
-                    <div class="table_item"></div>
-                    <div class="table_item"></div>
-                    <div class="table_item"></div>
-                    <div class="table_item"></div>
-                    <div class="table_item"></div>
-                    <div class="table_item"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
                 </div>
                 <div style="display: block;right: 60rem;">
-                    <div class="table_item"></div>
-                    <div class="table_item"></div>
-                    <div class="table_item"></div>
-                    <div class="table_item"></div>
-                    <div class="table_item"></div>
-                    <div class="table_item"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
                 </div>
                 <div style="display: block;right: 70rem;">
-                    <div></div>
-                    <div class="table_item"></div>
-                    <div class="table_item"></div>
-                    <div class="table_item"></div>
-                    <div class="table_item"></div>
-                    <div class="table_item"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
                 </div>
                 <div style="display: block;right: 80rem;">
-                    <div></div>
-                    <div class="table_item"></div>
-                    <div class="table_item"></div>
-                    <div class="table_item"></div>
-                    <div class="table_item"></div>
-                    <div class="table_item"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
+                    <div class="table_item table_space"></div>
                 </div>
             </div>
             <div style="text-align: center;position: absolute;bottom: 0rem;">
@@ -195,7 +195,16 @@
             ourClass.update(studentNumberAndNames.length);
             ourClass.updateStudentNames(studentNumberAndNames);
             ourClassHTML.setHTML();
-        })
+        });
+        document.querySelectorAll(".table_space").forEach(function (el, idx, parEl) {
+            el.addEventListener("click", function (ev) {
+                if (el.classList.contains("table_item")) {
+                    el.classList.remove("table_item");
+                } else {
+                    el.classList.add("table_item");
+                }
+            });
+        });
     </script>
 </body>
 
