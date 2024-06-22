@@ -200,8 +200,10 @@
             el.addEventListener("click", function (ev) {
                 if (el.classList.contains("table_item")) {
                     el.classList.remove("table_item");
+                    el.innerHTML=``;
                 } else {
                     el.classList.add("table_item");
+                    ourClassHTML.setHTML();
                 }
             });
         });
