@@ -1,0 +1,31 @@
+#my_table .table_item {
+    border: 1px solid #ffcf3f;
+    margin: 2.5px;
+    background: #76ff14;
+}
+
+#my_table .table_item div {
+    overflow: scroll;
+}
+
+#my_table>div>div {
+    width: 10rem !important;
+    display: block;
+    height: 6rem !important;
+}
+
+#my_table>div {
+    position: absolute;
+}
+
+#my_table .table_item div::-webkit-scrollbar {
+    background: #ffcf3f;
+}
+
+body {
+    font-size: var(--font-size);
+}
+
+* {
+    font-size: var(--font-size) !important;
+}
