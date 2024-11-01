@@ -29,3 +29,8 @@ body {
 * {
     font-size: var(--font-size) !important;
 }
+@media (max-width:60rem) {
+    :root {
+        --font-size: 10px !important;
+    }
+}
