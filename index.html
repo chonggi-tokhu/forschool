@@ -28,7 +28,7 @@
                     및 교탁
                 </div>
             </div>
-            <div id="my_table" style="display: flex;">
+            <div id="my_table" style="display: flex;margin-left:calc(15px * var(--font-size));">
                 <div style="display: block;right: calc(30px * var(--font-size));">
                     <div class="table_item table_space"></div>
                     <div class="table_item table_space"></div>
@@ -188,7 +188,7 @@
         var ourClassHTML = new schoolClassHTML(document.getElementById("new_table"), ourClass, { className: "table_item" });
         ourClassHTML.setHTML();
         document.addEventListener("DOMContentLoaded", function () {
-            document.querySelector('*').style.setProperty('--font-size', window.innerWidth / 100);
+            document.querySelector('*').style.setProperty('--font-size', window.innerWidth / 64);
         });
         document.getElementById("names_of_students_button").addEventListener("click", function (ev) {
             var studentNumberAndNames = document.getElementById("names_of_students").value.split(',');
