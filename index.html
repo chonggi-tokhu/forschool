@@ -203,7 +203,7 @@
         var ourClassHTML = new schoolClassHTML(document.getElementById("new_table"), ourClass, { className: "table_item" });
         ourClassHTML.setHTML();
         document.addEventListener("DOMContentLoaded", function () {
-            document.querySelector('*').style.setProperty('--font-size', window.innerWidth / 80);
+            document.querySelector('*').style.setProperty('--font-size', window.innerWidth / 96);
         });
         document.getElementById("names_of_students_button").addEventListener("click", function (ev) {
             var studentNumberAndNames = document.getElementById("names_of_students").value.split(',');
