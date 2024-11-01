@@ -9,9 +9,9 @@
 }
 
 #my_table .table_space {
-    width: 10rem !important;
+    width: 40px !important;
     display: block;
-    height: 6rem !important;
+    height: 24px !important;
 }
 
 #my_table>div {
