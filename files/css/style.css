@@ -23,9 +23,9 @@
 }
 
 body {
-    font-size: var(--font-size);
+    font-size: calc(var(--font-size) * 1px);
 }
 
 * {
-    font-size: var(--font-size) !important;
+    font-size: calc(var(--font-size) * 1px) !important;
 }
