@@ -31,6 +31,6 @@ body {
 }
 @media (max-width:60rem) {
     :root {
-        --font-size: 10px !important;
+        --font-size: 5px !important;
     }
 }
