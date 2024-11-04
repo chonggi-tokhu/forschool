@@ -47,7 +47,8 @@ schoolClass.prototype = {
     setJSON(jsonstr){
         var parsed = JSON.parse(jsonstr);
         this.newStudents = Array.isArray(parsed)?parsed.map((val,idx,arr)=>{return val.numb-1;}):this.newStudents;
-        this.studentnames = Array.isArray(parsed)?new Array(parsed.length).map((val,idx,arr)=>{console.log(parsed.map((val1,idx1,arr1)=>{if (val1.numb-1===idx){return val1;}})[0]); return parsed.map((val1,idx1,arr1)=>{if (val1.numb-1===idx){return val1;}})[0].name;}):this.studentnames;
+        var newarr=new Array(parsed.length);
+        this.studentnames = Array.isArray(parsed)?parsed.map((val,idx,arr)=>{return arr.map((val1,idx1,arr1)=>{if (idx===val1.numb-1){return val1.name}})[0];}):this.studentnames;
         this.names = this.studentnames;
         
         return this.update();
