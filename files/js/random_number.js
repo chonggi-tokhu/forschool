@@ -49,7 +49,7 @@ schoolClass.prototype = {
         this.newStudents = Array.isArray(parsed)?parsed.map((val,idx,arr)=>{return val.numb-1;}):this.newStudents;
         
         this.studentnames = Array.isArray(parsed)?parsed.map((val,idx,arr)=>{return parsed[val.numb-1].name}):this.studentnames;
-        this.names = this.studentnames;
+        /*this.names = this.studentnames;*/
         
         return this.update();
     },
