@@ -52,7 +52,14 @@ schoolClass.prototype = {
         this.names = this.studentnames;
         
         return this.update();
-    }
+    },
+    generateJSON(){
+        var rtv = new Array(this.students.length);
+        for (var i = 0;i<rtv.length;i++){
+            rtv[i]={numb:this.newStudents[i]+1,name:this.matchNumbersAndNames()[i]};
+        }
+        return JSON.stringifiy(rtv);
+    },
 }
 
 function schoolClassHTML(myEl, yourClass, { className }) {
