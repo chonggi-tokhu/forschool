@@ -20,7 +20,7 @@
                         자리
                         바꾸기</button></div>
                 <div><input type="text" id="names_of_students" placeholder="출석부 입력(1번 학생,2번 학생,3번 학생... 식)"
-                        style="width: calc(24px * var(--font-size));overflow-x: scroll;"><label><input type="checkbox" onchange="ourClassHTML.setJSON(document.getElementById('names_of_students').value);">JSON 입력?</label></div>
+                        style="width: calc(24px * var(--font-size));overflow-x: scroll;"><button onclick="ourClassHTML.yourClass.setJSON(document.getElementById('names_of_students').value);">JSON 입력?</button></div>
                 <div><button id="names_of_students_button">출석부 다시 입력!</button></div>
             </div>
             <div style="text-align: center;">
