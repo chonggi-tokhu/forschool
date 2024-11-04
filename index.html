@@ -204,9 +204,11 @@
         var deskh=6;
             deskw = !isNaN(Number(new URL(location.href).searchParams.get('width')))&&Number(new URL(location.href).searchParams.get('width'))>0?Number(new URL(location.href).searchParams.get('width')):deskw;
             deskh = !isNaN(Number(new URL(location.href).searchParams.get('height')))&&Number(new URL(location.href).searchParams.get('height'))>0?Number(new URL(location.href).searchParams.get('height')):deskh;
-        document.querySelector(`#my_table`).innerHTML = `
-                <div style="display: block;left: calc(60px * var(--font-size));">
-                </div>`.repeat(deskw);
+        document.querySelector(`#my_table`).innerHTML = (()=>{
+            var rtv='';
+            for (var i = 0;i<deskw;i++){rtv+=`
+                <div style="display: block;left: calc(${i}0px * var(--font-size));">
+                </div>`} return rtv;})();
         document.querySelectorAll(`#my_table>div`).forEach((el,idx,par)=>{
             el.innerHTML = `
                     <div class="table_item table_space"></div>`.repeat(deskh);
