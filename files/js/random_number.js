@@ -46,7 +46,10 @@ schoolClass.prototype = {
     },
     setJSON(jsonstr){
         var parsed = JSON.parse(jsonstr);
-        this.newStudents = Array.isArray(parsed)?parsed.length===this.newStudents.length?parsed:this.newStudents:this.newStudents;
+        this.newStudents = Array.isArray(parsed)?parsed.length===this.newStudents.length?parsed.map((val,idx,arr)=>{return val.numb;}):this.newStudents:this.newStudents;
+        
+        this.studentnames = Array.isArray(parsed)?parsed.length===this.newStudents.length?parsed.map((val,idx,arr)=>{return val.name;}):this.newStudents:this.newStudents;
+        
         return this.update();
     }
 }
