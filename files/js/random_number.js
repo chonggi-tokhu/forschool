@@ -23,9 +23,9 @@ schoolClass.prototype = {
             var numb = Math.floor(Math.random() * numbers.length);
             newNumber[i] = numbers[numb];
             numbers.splice(numb, 1);
-            console.log(numbers);
-            console.log(i);
-            console.log(this.newStudents.length);
+            //console.log(numbers);
+            //console.log(i);
+            //console.log(this.newStudents.length);
         }
         this.newStudents = newNumber;
         return this.update();
