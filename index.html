@@ -95,7 +95,7 @@
             </div>
             <div style="text-align: center;position: absolute;bottom: calc(-15px * var(--font-size));">
                 <div style="width: calc(60px * var(--font-size)) !important;border: 1px solid #050505;display: block;background: lightgrey;">
-                    사물함<br><span contenteditable="true" class="s_w" style="border:1px solid #050505;">7</span>*<span contenteditable="true" class="s_h" style="border:1px solid #050505;">6</span><span onclick="var parel=this.parentElement;location.replace('/'+url.pathname + '?width='+parel.querySelector('.s_w').innerHTML+'&height='+parel.querySelector('.s_h').innerHTML);" style="font-weight:105%;" role="button">명</span>
+                    사물함<br><span contenteditable="true" class="s_w" style="border:1px solid #050505;">7</span>*<span contenteditable="true" class="s_h" style="border:1px solid #050505;">6</span><span onclick="var parel=this.parentElement;location.replace(url.pathname + '?width='+parel.querySelector('.s_w').innerHTML+'&height='+parel.querySelector('.s_h').innerHTML);" style="font-weight:105%;" role="button">명</span>
                 </div>
             </div>
         </div>
@@ -202,8 +202,8 @@
         window.URL.createObjectURL(new Blob(binaryData, { type: "video/mp4" }));*/
         var deskw=7;
         var deskh=6;
-            deskw = !isNaN(Number(new URL(location.href).searchParams.get('width')))?Number(new URL(location.href).searchParams.get('width')):deskw;
-            deskh = !isNaN(Number(new URL(location.href).searchParams.get('height')))?Number(new URL(location.href).searchParams.get('height')):deskh;
+            deskw = !isNaN(Number(new URL(location.href).searchParams.get('width')))&&Number(new URL(location.href).searchParams.get('width'))>0?Number(new URL(location.href).searchParams.get('width')):deskw;
+            deskh = !isNaN(Number(new URL(location.href).searchParams.get('height')))&&Number(new URL(location.href).searchParams.get('height'))>0?Number(new URL(location.href).searchParams.get('height')):deskh;
         document.querySelector(`#my_table`).innerHTML = `
                 <div style="display: block;left: calc(60px * var(--font-size));">
                 </div>`.repeat(deskw);
