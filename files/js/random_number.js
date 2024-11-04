@@ -43,6 +43,11 @@ schoolClass.prototype = {
         }
         this.names = names;
         return this.names;
+    },
+    setJSON(jsonstr){
+        var parsed = JSON.parse(jsonstr);
+        this.newStudents = Array.isArray(parsed)?parsed.length===this.newStudents.length?parsed:this.newStudents:this.newStudents;
+        return this.update();
     }
 }
 
